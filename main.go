@@ -1,8 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"github.com/amirhossein2831/DummyGo/Error"
-	"github.com/go-chi/chi/v5"
+	"github.com/amirhossein2831/DummyGo/Router"
 	"github.com/joho/godotenv"
 	"log"
 	"net/http"
@@ -13,9 +14,12 @@ func main() {
 	err := godotenv.Load()
 	Error.CheckError(err)
 
-	router := chi.NewRouter()
+	router := Router.Route()
 
-	log.Printf("The app start in port %v", os.Getenv("APP_PORT"))
-	err = http.ListenAndServe(":"+os.Getenv("APP_PORT"), router)
+	log.Printf("The app start in port %v:", os.Getenv("APP_PORT"))
+	err = http.ListenAndServe(
+		fmt.Sprintf(":%v", os.Getenv("APP_PORT")),
+		router,
+	)
 	Error.CheckError(err)
 }
