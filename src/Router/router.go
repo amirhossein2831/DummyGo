@@ -1,7 +1,7 @@
 package Router
 
 import (
-	"github.com/amirhossein2831/DummyGo/src/Error/Middleware"
+	"github.com/amirhossein2831/DummyGo/src/Middleware"
 	"github.com/go-chi/chi/v5"
 )
 
