@@ -16,3 +16,10 @@ func ToJson(w http.ResponseWriter, statusCode int, data interface{}) {
 	err := json.NewEncoder(w).Encode(data)
 	JsonError(w, err)
 }
+
+func ToStruct(w http.ResponseWriter, r *http.Request, data interface{}) {
+	decoder := json.NewDecoder(r.Body)
+	decoder.DisallowUnknownFields()
+	err := decoder.Decode(&data)
+	JsonError(w, err)
+}
