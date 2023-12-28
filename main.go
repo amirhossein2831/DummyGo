@@ -1,5 +1,12 @@
 package main
 
+import (
+	"github.com/amirhossein2831/DummyGo/Error"
+	"github.com/joho/godotenv"
+)
+
 func main() {
-	print("hello")
+	err := godotenv.Load()
+	Error.CheckError(err)
+
 }
