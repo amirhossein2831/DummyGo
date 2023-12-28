@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/amirhossein2831/DummyGo/Error"
 	"github.com/amirhossein2831/DummyGo/src/App"
+	"github.com/amirhossein2831/DummyGo/src/Error"
 	"github.com/joho/godotenv"
 	"log"
 	"net/http"
