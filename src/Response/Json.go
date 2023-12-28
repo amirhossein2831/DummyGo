@@ -23,3 +23,13 @@ func ToStruct(w http.ResponseWriter, r *http.Request, data interface{}) {
 	err := decoder.Decode(&data)
 	JsonError(w, err)
 }
+
+func JsonError(w http.ResponseWriter, err error) {
+	if err != nil {
+		payload := ErrorResponse{
+			Error:   true,
+			Message: err.Error(),
+		}
+		ToJson(w, http.StatusBadRequest, payload)
+	}
+}
