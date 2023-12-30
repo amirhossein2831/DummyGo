@@ -3,6 +3,7 @@ package App
 import (
 	"github.com/amirhossein2831/DummyGo/src/Router"
 	"github.com/go-chi/chi/v5"
+	"gorm.io/gorm"
 	"os"
 )
 
@@ -12,6 +13,7 @@ type Application struct {
 	Domain  string
 	AppName string
 	Router  *chi.Mux
+	DB      *gorm.DB
 }
 
 func InitApp(app *Application) {
