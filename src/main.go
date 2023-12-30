@@ -11,13 +11,18 @@ import (
 )
 
 func main() {
-	//instantiate the app
+	//Instantiate the app
 	App.InitApp(&App.App)
 
-	//load env file
-	err := godotenv.Load()
+	//Load env file
+	err := godotenv.Load("./../.env")
 	Error.CheckError(err)
 
+	//Connect to DB
+
+	//Migrate DB Table
+
+	//Start HttpServer
 	log.Printf("The app start in port %v:", os.Getenv("APP_PORT"))
 	err = http.ListenAndServe(
 		fmt.Sprintf(":%v", os.Getenv("APP_PORT")),
