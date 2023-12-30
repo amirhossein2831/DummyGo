@@ -5,6 +5,7 @@ import (
 	"github.com/amirhossein2831/DummyGo/src/App"
 	"github.com/amirhossein2831/DummyGo/src/DB"
 	"github.com/amirhossein2831/DummyGo/src/Error"
+	"github.com/amirhossein2831/DummyGo/src/Model/Migrator"
 	"github.com/joho/godotenv"
 	"log"
 	"net/http"
@@ -24,6 +25,8 @@ func main() {
 	Error.CheckError(err)
 
 	//Migrate DB Table
+	err = Migrator.Migrate()
+	Error.CheckError(err)
 
 	//Start HttpServer
 	log.Println("Connected to DB successfully.")
