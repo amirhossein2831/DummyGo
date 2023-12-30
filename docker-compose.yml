@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    container_name: postgresGoDummy
+    restart: always
+    ports:
+      - "${PG_PORT:-5433}:5432"
+    environment:
+      POSTGRES_USER: ${PG_USER:-admin}
+      POSTGRES_PASSWORD: ${PG_PASS:-password}
+      POSTGRES_DB: ${PG_DB:-DummyGo}
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data'
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
