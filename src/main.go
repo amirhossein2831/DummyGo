@@ -25,7 +25,7 @@ func main() {
 	Error.CheckError(err)
 
 	//Migrate DB Table
-	err = Migrator.Migrate()
+	err = Migrator.MigrateUp()
 	Error.CheckError(err)
 
 	//Start HttpServer

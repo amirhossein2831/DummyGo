@@ -13,11 +13,21 @@ func getModel() (models []interface{}) {
 	return
 }
 
-func Migrate() error {
+func MigrateUp() error {
 	models := getModel()
 
 	for _, value := range models {
 		if err := App.App.DB.AutoMigrate(value); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func MigrateDown() error {
+	models := getModel()
+	for _, tableName := range models {
+		if err := App.App.DB.Migrator().DropTable(tableName); err != nil {
 			return err
 		}
 	}
