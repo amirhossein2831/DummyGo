@@ -33,3 +33,10 @@ func MigrateDown() error {
 	}
 	return nil
 }
+
+func MigrateDownTable(table interface{}) error {
+	if err := App.App.DB.Migrator().DropTable(table); err != nil {
+		return err
+	}
+	return nil
+}
