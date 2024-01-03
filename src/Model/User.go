@@ -21,3 +21,12 @@ func GetAllUser() ([]User, error) {
 	}
 	return users, nil
 }
+
+func GetUser(userID string) (User, error) {
+	user := User{}
+	res := App.App.DB.First(&user, userID)
+	if res.Error != nil {
+		return User{}, res.Error
+	}
+	return user, nil
+}
