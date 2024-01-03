@@ -8,11 +8,18 @@ import (
 	"net/http"
 )
 
-func index() {
-
+func UserIndex(w http.ResponseWriter, r *http.Request) {
+	users, err := Model.GetAllUser()
+	if err != nil {
+		Response.ToJson(w, 400, err)
+		return
+	}
+	Response.ToJson(w, 200, struct {
+		Users []Model.User `json:"users"`
+	}{Users: users})
 }
 
-func show() {
+func Show(w http.ResponseWriter, r *http.Request) {
 
 }
 
@@ -23,6 +30,7 @@ func StoreUser(w http.ResponseWriter, r *http.Request) {
 	res := App.App.DB.Create(&user)
 	if res.Error != nil {
 		Response.ToJson(w, 400, res.Error)
+		return
 	}
 	Response.ToJson(w, 200, user)
 }
