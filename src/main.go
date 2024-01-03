@@ -1,4 +1,4 @@
-package main
+﻿package main
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 	"github.com/amirhossein2831/DummyGo/src/DB"
 	"github.com/amirhossein2831/DummyGo/src/Error"
 	"github.com/amirhossein2831/DummyGo/src/Model/Migrator"
+	"github.com/amirhossein2831/DummyGo/src/Router"
 	"github.com/joho/godotenv"
 	"log"
 	"net/http"
@@ -15,6 +16,9 @@ import (
 func main() {
 	//Instantiate the app
 	App.InitApp(&App.App)
+
+	//instantiate router
+	router := Router.Route()
 
 	//Load env file
 	err := godotenv.Load("./../.env")
@@ -33,7 +37,7 @@ func main() {
 	log.Printf("The app start in port %v: \n", os.Getenv("APP_PORT"))
 	err = http.ListenAndServe(
 		fmt.Sprintf(":%v", os.Getenv("APP_PORT")),
-		App.App.Router,
+		router,
 	)
 	Error.CheckError(err)
 }
