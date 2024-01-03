@@ -16,6 +16,7 @@ func Route() *chi.Mux {
 	router.Route("/api/v1", func(r chi.Router) {
 		//Add Routes Here
 		Router.HomeRoutes(r)
+		Router.UserRoutes(r)
 	})
 	return router
 }
