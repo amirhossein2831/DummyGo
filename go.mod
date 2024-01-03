@@ -6,6 +6,8 @@ require (
 	github.com/go-chi/chi/v5 v5.0.11
 	github.com/go-chi/cors v1.2.1
 	github.com/joho/godotenv v1.5.1
+	gorm.io/driver/postgres v1.5.4
+	gorm.io/gorm v1.25.5
 )
 
 require (
@@ -18,6 +20,4 @@ require (
 	golang.org/x/crypto v0.17.0 // indirect
 	golang.org/x/sync v0.5.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
-	gorm.io/driver/postgres v1.5.4 // indirect
-	gorm.io/gorm v1.25.5 // indirect
 )
