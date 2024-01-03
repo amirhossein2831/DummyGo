@@ -17,13 +17,6 @@ func ToJson(w http.ResponseWriter, statusCode int, data interface{}) {
 	JsonError(w, err)
 }
 
-func ToStruct(w http.ResponseWriter, r *http.Request, data interface{}) {
-	decoder := json.NewDecoder(r.Body)
-	decoder.DisallowUnknownFields()
-	err := decoder.Decode(&data)
-	JsonError(w, err)
-}
-
 func JsonError(w http.ResponseWriter, err error) {
 	if err != nil {
 		payload := ErrorResponse{
