@@ -5,6 +5,7 @@ import (
 	"github.com/amirhossein2831/DummyGo/src/Model"
 	"github.com/amirhossein2831/DummyGo/src/Request"
 	"github.com/amirhossein2831/DummyGo/src/Response"
+	"github.com/go-chi/chi/v5"
 	"net/http"
 )
 
@@ -19,8 +20,14 @@ func UserIndex(w http.ResponseWriter, r *http.Request) {
 	}{Users: users})
 }
 
-func Show(w http.ResponseWriter, r *http.Request) {
-
+func ShowUser(w http.ResponseWriter, r *http.Request) {
+	userID := chi.URLParam(r, "userID")
+	user, err := Model.GetUser(userID)
+	if err != nil {
+		Response.ToJson(w, 400, err)
+		return
+	}
+	Response.ToJson(w, 200, user)
 }
 
 func StoreUser(w http.ResponseWriter, r *http.Request) {
