@@ -7,5 +7,7 @@ import (
 
 func UserRoutes(router chi.Router) {
 	//Add User Routes
-	router.Post("/user", Controller.StoreUser)
+	router.Get("/users", Controller.UserIndex)
+	router.Get("/users/{userID}", Controller.ShowUser)
+	router.Post("/users", Controller.StoreUser)
 }
